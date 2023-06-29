@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slider with Zoom Effect</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+  <style>
+
+.wrapper {
+  padding: 70px 0;
+}
+
+/* Default slide */
+.center-slider .slick-slide {
+  margin: 0 15px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0.8);
+  transition: all 0.4s ease-in-out;
+  
+}
+
+.center-slider .slick-slide,
+.center-slider .slick-slide[aria-hidden="true"]:not(.slick-cloned) ~ .slick-cloned[aria-hidden="true"] {
+  transform: scale(0.8, 0.8);
+  transition: all 0.4s ease-in-out;
+}
+
+/* Active center slide */
+.center-slider .slick-center,
+.center-slider .slick-slide[aria-hidden="true"]:not([tabindex="-1"]) + .slick-cloned[aria-hidden="true"] {
+  transform: scale(1.1);
+}
+
+.center-slider .slick-current.slick-active {
+  transform: scale(1.1);
+}
+
+/* Slide text */
+.slide-content {
+  display: none;
+  position: relative;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  color: #0f0e0e;
+  font-size: 18px;
+  text-align: center;
+  display:flex ;
+  align-items: center;
+  margin: auto;
+  z-index: 1;
+  border:1px solid #0f0e0e;
+  
+}
+
+.center-slider .slick-center .slide-content {
+  display: block;
+}
+
+
+ 
+    .slick-prev,
+    .slick-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 80%;
+      font-size: 60px;
+      line-height: 40px;
+      text-align: center;
+      opacity: 0.75;
+      cursor: pointer;
+      background-color: transparent; 
+    }
+    .slick-prev:before,
+    .slick-next:before {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .slick-prev {
+      left: 10px;
+      
+    }
+    .slick-prev:before {
+      content: "<";
+      color:blue;
+      
+    }
+    .slick-next {
+      right: 10px;
+    }
+    .slick-next:before {
+      content: ">";
+      color:blue;
+    }
+    .slick-slider .slick-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+    .slick-slider .slick-slide img {
+      
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: 500px;
+      margin:60px 60px 240px 60px;
+      transition: transform 0.3s;
+      border:1px solid #0f0e0e;
+    }
+    .slick-slider .slick-center img {
+      transform: scale(1.3);
+    }
+    
+
+ .slider
+ {
+  margin: auto ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+
+
+  </style>
+</head>
+<body>
+    <div class="slider">
+        <div>
+          <div class="slide-content">
+            <h2>Title 1</h2><br>
+            <p>Description 1</p>
+          </div>
+          <img src="/LandingPage_Ipad_Dashboard 1.gif" alt="Image 1">
+        </div>
+        <div>
+          <div class="slide-content">
+            <h2>Title2</h2>
+            <p>Description2 eomdaowmod</p>
+          </div>
+          <img src="/LandingPage_Phone_Community 1.gif" alt="Image 2">
+        </div>
+        <div>
+          <div class="slide-content">
+            <h2>Title 3</h2>
+            <p>Description 3</p>
+          </div>
+          <img src="/LandingPage_Phone_Library 1.gif" alt="Image 3">
+        </div>
+        <div>
+          <div class="slide-content">
+            <h2>Title 4</h2>
+            <p>Description 4</p>
+          </div>
+          <img src="/LandingPage_Phone_Library 1.gif" alt="Image 4">
+        </div>
+      </div>
+      
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.slider').slick({
+        slidesToShow: 3,
+        centerMode: true,
+        centerPadding: '0',
+        initialSlide: 1,    
+        prevArrow: '<button type="button" class="slick-prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Previous</span></button>',
+        nextArrow: '<button type="button" class="slick-next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Next</span></button>',
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1
+            }
+          }
+        ]
+      });
+    });
+    $(document).ready(function() {
+  var slider = $('.slider');
+
+  slider.on('afterChange', function(event, slick, currentSlide) {
+    $('.slide-content').hide();
+    $('.slick-center .slide-content').show();
+  });
+
+  slider.slick({
+    // Slick configuration options
+  });
+});
+
+  </script>
+</body>
+</html>
